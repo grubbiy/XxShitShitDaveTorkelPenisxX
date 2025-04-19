@@ -6,7 +6,7 @@ import time
 
 
 # Hvor Tesseract er installert
-pytesseract.pytesseract.tesseract_cmd = r"C:\TesseractPY\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Ta screenshot og lagre for debug
 
@@ -27,7 +27,7 @@ def fjern_duplikat_navn(liste):
 
 
 def dockedButtonFindr():
-    options = [userShip, "Ship", "Item", "Multi", "Ultra"]
+    options = [userShip, "Ship", "Item", "Multi", "Ultra", "Gamma"]
     options_ = []
 
     min_x, max_x = 48, 2000
@@ -68,8 +68,8 @@ def dockedButtonFindr():
     unique_options = fjern_duplikat_navn(unique_options)
 
     undock = pyautogui.locateOnScreen('undock.png')
-    undockx = undock[0]-undock[2]/2
-    undocky = undock[1] - undock[3] / 2
+    undockx = undock[0]+undock[2]/2
+    undocky = undock[1] + undock[3] / 2
 
     unique_options.append(["Undock",int(undockx),int(undocky)])
 
