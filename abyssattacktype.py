@@ -4,12 +4,10 @@ import pyautogui
 import time
 #pyautogui.mouseInfo()
 # Vent litt før screenshot
-for i in range(3, 0, -1):
-    print(i)
-    time.sleep(1)
+
 
 # Hvor Tesseract er installert
-pytesseract.pytesseract.tesseract_cmd = r"C:\TesseractPY\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Ta screenshot og lagre for debug
 
