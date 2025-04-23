@@ -53,7 +53,7 @@ for button in undockedButtons:
 
 '''
 enemiesLocation = enemyFindr()
-structureLocation = structureFindr()
+structureLocat   ion = structureFindr()
 
 print("\nI found these enemies:")
 print(enemiesLocation)

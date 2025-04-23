@@ -1,10 +1,14 @@
+from pyautogui import moveTo
+
 from utils import find_button_position
 from utils import click_button
 from utils import wait_for_text
 from utils import wait_for
+from utils import find_phrase_position
 import pyautogui, time
 
 def buyFilament():
+
     print("Opening the Regional Market.")
     click_button("Regional")
 
@@ -25,6 +29,8 @@ def buyFilament():
 
     time.sleep(8)
 
+
+
     print("Går til Inventory")
     if not wait_for("Inventory", timeout=10):
         print("Fant ikke 'Inventory'")
@@ -35,16 +41,17 @@ def buyFilament():
     print("Åpner Item Hangar")
     click_button("Item")
 
+
     print("Leter etter Filament")
-    if not wait_for("Tranquil", timeout=10):
-        print("Fant ikke 'Tranquil'")
+    if not wait_for("Electrical", timeout=10):
+        print("Fant ikke 'Electrical'")
         return
-    click_button("Tranquil")
+    click_button("Electrical")
     print("Fant Filament")
 
     print("Leter etter skipet ditt")
-    if wait_for_text("PenisOst", timeout=10):
-        user = find_button_position("PenisOst")
+    if wait_for_text("Punisher", timeout=10):
+        user = find_button_position("Punisher")
         if user:
             print("Dra Filament til skipet")
             pyautogui.mouseDown()

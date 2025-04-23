@@ -5,6 +5,7 @@ from buyFilament import buyFilament
 from formFleet import FormFleet
 from activateFilament import activateFilament
 import time
+from abyssattacktype import enemyFindr, structureFindr
 #pyautogui.mouseInfo()
 
 
@@ -12,8 +13,9 @@ print("Starter bot, venter litt...")
 time.sleep(4)
 
 
-#buyFilament()
-#FormFleet()
+
+buyFilament()
+FormFleet()
 
 undockPos = pyautogui.locateOnScreen('undock.png')
 pyautogui.moveTo(undockPos[0],undockPos[1],0.3)
@@ -46,4 +48,9 @@ click_button("Abyssal")
 for i in range(30, 0, -1):
     print(i)
     time.sleep(1)
+
 activateFilament()
+
+time.sleep(12)
+
+currentEnemies = enemyFindr()

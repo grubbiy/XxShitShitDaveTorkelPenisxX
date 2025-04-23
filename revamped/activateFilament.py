@@ -10,7 +10,6 @@ time.sleep(4)
 
 
 def activateFilament():
-    '''
     if not wait_for("Tranquil", timeout=10):
         print("Fant ikke 'Tranquil'")
     click_button("Tranquil")
@@ -24,7 +23,6 @@ def activateFilament():
         print("Fant ikke 'Activate'")
     click_button("Activate")
     time.sleep(10)
-    '''
     activateGate = find_phrase_position("Abyssal Trace")
     moveTo(activateGate[0],activateGate[1],0.3)
     pyautogui.rightClick()
@@ -36,4 +34,3 @@ def activateFilament():
     activateElGate = pyautogui.locateOnScreen('activateElFil.png')
     pyautogui.moveTo(activateElGate[0],activateElGate[1],0.5)
     pyautogui.click()
-activateFilament()

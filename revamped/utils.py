@@ -7,7 +7,7 @@ import numpy as np
 from PIL import ImageGrab
 
 # Sett pytesseract path hvis nødvendig
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\TesseractPY\tesseract.exe'
 
 def grab_screen(region=None):
     img = ImageGrab.grab(bbox=region)
