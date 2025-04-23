@@ -17,7 +17,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\TesseractPY\tesseract.exe"
 def enemyFindr():
 
     # Liste over fiender vi vil finne
-    enemy_names = ["Aegis", "Strikeneedle", "Damavik", "Lancer", "Emberneedle"]
+    enemy_names = ["Aegis", "Tessella", "Damavik", "Lancer", "Lucid"]
 
 
     # Her lagres resultatet
@@ -49,7 +49,7 @@ def enemyFindr():
 
                     # Filtrér ut alt utenfor området
                     if min_x <= center_x <= max_x and min_y <= center_y <= max_y:
-                        propulsion = 1 if enemy in ["Aegis", "Lancer", "Emberneedle"] else 0
+                        propulsion = 1 if enemy in ["Aegis", "Lancer", "Emberneedle", "Lucid"] else 0
                         attackEnemies.append([enemy, center_x, center_y, propulsion])
                         #print(f"Funnet {enemy} på ({center_x}, {center_y})")
     print("Found all words in x tries.")

@@ -28,7 +28,7 @@ def FormFleet():
     pyautogui.keyUp('ctrl')
 
     print("Venter på at 'Form Fleet' skal vises")
-    if wait_for_text("Form Fleet", timeout=10):
+    if wait_for_text("Form Fleet"):
         pos = find_phrase_position("Form Fleet")
         if pos:
             pyautogui.moveTo(pos)

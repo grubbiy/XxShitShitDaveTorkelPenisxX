@@ -10,16 +10,16 @@ time.sleep(4)
 
 
 def activateFilament():
-    if not wait_for("Tranquil", timeout=10):
+    if not wait_for("Tranquil"):
         print("Fant ikke 'Tranquil'")
     click_button("Tranquil")
     pyautogui.rightClick()
     time.sleep(0.4)
-    if not wait_for("Use", timeout=10):
+    if not wait_for("Use"):
         print("Fant ikke 'Use'")
     click_button("Use")
     time.sleep(0.5)
-    if not wait_for("Activate", timeout=10):
+    if not wait_for("Activate"):
         print("Fant ikke 'Activate'")
     click_button("Activate")
     time.sleep(10)
@@ -27,7 +27,7 @@ def activateFilament():
     moveTo(activateGate[0],activateGate[1],0.3)
     pyautogui.rightClick()
     time.sleep(1)
-    if not wait_for("Activate", timeout=10):
+    if not wait_for("Activate"):
         print("Fant ikke 'Activate'")
     click_button("Activate")
     time.sleep(3)
