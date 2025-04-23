@@ -10,18 +10,18 @@ import pyautogui, time
 def buyFilament():
 
     print("Opening the Regional Market.")
-    if not wait_for("Regional"):
+    if not wait_for("Regional", timeout=50):
         print("Fant ikke 'Regional'")
         return
     click_button("Regional")
 
     print("Choosing an item to buy.")
-    if not wait_for("Station"):
+    if not wait_for("Station", timeout=50):
         print("Fant ikke 'Station'")
         return
     click_button("Station")
     pyautogui.click()
-    time.sleep(0.2)
+    time.sleep(4)
 
     print("Choosing how many items")
     pyautogui.press('3')
@@ -38,25 +38,29 @@ def buyFilament():
 
 
     print("Går til Inventory")
-    if not wait_for("Inventory"):
+    if not wait_for("Inventory", timeout=50):
         print("Fant ikke 'Inventory'")
         return
     click_button("Inventory")
     time.sleep(0.3)
 
     print("Åpner Item Hangar")
+    if not wait_for("Item", timeout=50):
+        print("Fant ikkje Item Hangar")
+        return
     click_button("Item")
 
 
+
     print("Leter etter Filament")
-    if not wait_for("Electrical"):
+    if not wait_for("Electrical", timeout=50):
         print("Fant ikke 'Electrical'")
         return
     click_button("Electrical")
     print("Fant Filament")
 
     print("Leter etter skipet ditt")
-    if wait_for_text("Punisher"):
+    if wait_for_text("Punisher", timeout=50):
         user = find_button_position("Punisher")
         if user:
             print("Dra Filament til skipet")

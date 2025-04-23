@@ -2,8 +2,9 @@ import time
 import pyautogui
 from abyssattacktype import enemyFindr, structureFindr
 from utils import click_button
-print("Attacking phase.")
+
 def attack_enemies():
+    print("Attacking phase.")
     '''
     while enemies:
         for enemy in enemies:
@@ -87,6 +88,7 @@ def attack_enemies():
             pyautogui.keyUp('w')
             print("Starting countdown for moving closer.")
             for i in range(13,0,-1):
+                time.sleep(1)
                 print(i)
 
         print("Orbiting enemy for attack.")
@@ -116,6 +118,7 @@ def attack_enemies():
             print(f'Waiting for an enemy to die. {checks_} checks.')
             checks_ += 1
             newEnemiesCheck = enemyFindr()
+            time.sleep(5)
 
 
 
@@ -140,6 +143,7 @@ def attack_enemies():
                     time.sleep(8)
                     print("Here there would be a function to open up the loot and loot it, we are not there yet.")
                     rekkefølge += 1
+                    break
             if rekkefølge == 2:
                 if structure[0] == 'Transfer':
                     print(f'I would like to go to: {structure}')
