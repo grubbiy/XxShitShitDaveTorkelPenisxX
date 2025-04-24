@@ -7,7 +7,7 @@ import time
 
 
 # Hvor Tesseract er installert
-pytesseract.pytesseract.tesseract_cmd = r"C:\TesseractPY\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"PyTesseract\tesseract.exe"
 
 # Ta screenshot og lagre for debug
 

@@ -7,7 +7,8 @@ import numpy as np
 from PIL import ImageGrab
 
 # Sett pytesseract path hvis nødvendig
-pytesseract.pytesseract.tesseract_cmd = r'C:\TesseractPY\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'PyTesseract\tesseract.exe'
+print("PyTesseract set up.")
 
 def grab_screen(region=None):
     img = ImageGrab.grab(bbox=region)
@@ -80,7 +81,6 @@ def find_pixel_color(target_rgb, region=None):
                     y += region[1]
                 return (x, y)
     return None
-
 
 def find_phrase_position(phrase, region=None):
     screen = grab_screen(region)
