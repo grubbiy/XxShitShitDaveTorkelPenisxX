@@ -2,6 +2,9 @@ from PIL import Image
 import pytesseract
 import pyautogui
 import time
+import cv2
+from utils import grab_screen
+from utils import sendStatus
 #pyautogui.mouseInfo()
 # Vent litt før screenshot
 
@@ -17,7 +20,7 @@ pytesseract.pytesseract.tesseract_cmd = r"PyTesseract\tesseract.exe"
 def enemyFindr():
 
     # Liste over fiender vi vil finne
-    enemy_names = ["Aegis", "Tessella", "Damavik", "Lancer", "Lucid"]
+    enemy_names = ["Aegis", "Tessella", "Damavik", "Lancer", "Lucid", "Devoted"]
 
 
     # Her lagres resultatet
@@ -27,12 +30,24 @@ def enemyFindr():
     min_y, max_y = 186, 688
 
     # Gå gjennom alle ord
-    for i in range(5):
-        print(f'Starting for the {i+1}. time.')
+    for i in range(3):
+        '''
+        sendStatus(f'Starting for the {i+1}. time.')
         image = pyautogui.screenshot()
         image.save("debugimage.png")
+        image.save("PictureByPython.png")
 
-        data = pytesseract.image_to_data(image, output_type=pytesseract.Output.DICT)
+        image = cv2.imread("PictureByPython.png")
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        enhanced = cv2.equalizeHist(gray)
+        cv2.imwrite("PictureByPython_Better.png", enhanced)
+        '''
+
+        screen = grab_screen()
+        gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite("gray_debug.png", gray)
+
+        data = pytesseract.image_to_data(gray, output_type=pytesseract.Output.DICT)
 
         for i in range(len(data['text'])):
             word = data['text'][i].strip()
@@ -51,12 +66,12 @@ def enemyFindr():
                     if min_x <= center_x <= max_x and min_y <= center_y <= max_y:
                         propulsion = 1 if enemy in ["Aegis", "Lancer", "Emberneedle", "Lucid"] else 0
                         attackEnemies.append([enemy, center_x, center_y, propulsion])
-                        #print(f"Funnet {enemy} på ({center_x}, {center_y})")
-    print("Found all words in x tries.")
+                        #sendStatus(f"Funnet {enemy} på ({center_x}, {center_y})")
+    sendStatus("Found all words in x tries.")
     # Debug: Vis hele lista
-    '''print("\nFiender funnet før sletting av duplikat:")
+    '''sendStatus("\nFiender funnet før sletting av duplikat:")
     for enemy in attackEnemies:
-        print(enemy)
+        sendStatus(enemy)
         pyautogui.moveTo(enemy[1],enemy[2], 0.3)
     '''
     # Fjern duplikater etterpå
@@ -70,9 +85,9 @@ def enemyFindr():
         if key not in seen:
             unique_attackEnemies.append(enemy)
             seen.add(key)
-    '''print("\nFiender etter sletting av duplikat:")
+    '''sendStatus("\nFiender etter sletting av duplikat:")
     for enemy in unique_attackEnemies:
-        print(enemy)
+        sendStatus(enemy)
         pyautogui.moveTo(enemy[1],enemy[2], 0.3)'''
     return unique_attackEnemies
 
@@ -85,8 +100,8 @@ def structureFindr():
     min_y, max_y = 186, 688
 
     # Gå gjennom alle ord
-    for i in range(5):
-        print(f'Started for the {i+1}. time.')
+    for i in range(2):
+        sendStatus(f'Started for the {i+1}. time.')
         image = pyautogui.screenshot()
         image.save("debugimage.png")
 
@@ -108,13 +123,13 @@ def structureFindr():
                     # Filtrér ut alt utenfor området
                     if min_x <= center_x <= max_x and min_y <= center_y <= max_y:
                         structureAttack.append([static, center_x, center_y])
-                        #print(f"Funnet {static} på ({center_x}, {center_y})")
+                        #sendStatus(f"Funnet {static} på ({center_x}, {center_y})")
 
-    print("All words found in x times.")
+    sendStatus("All words found in x times.")
     # Debug: Vis hele lista
-    '''print("\nStatisk funnet før sletting av duplikat:")
+    '''sendStatus("\nStatisk funnet før sletting av duplikat:")
     for static in structureAttack:
-        print(static)
+        sendStatus(static)
         pyautogui.moveTo(static[1], static[2], 0.3)
     '''
     # Fjern duplikater etterpå
@@ -128,9 +143,9 @@ def structureFindr():
         if key not in seen:
             unique_structureAttack.append(static)
             seen.add(key)
-    '''print("\nStatisk etter sletting av duplikat:")
+    '''sendStatus("\nStatisk etter sletting av duplikat:")
     for static in unique_structureAttack:
-        print(static)
+        sendStatus(static)
         pyautogui.moveTo(static[1], static[2], 0.3)'''
 
     return unique_structureAttack

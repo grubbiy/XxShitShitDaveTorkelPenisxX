@@ -5,10 +5,18 @@ import time
 import cv2
 import numpy as np
 from PIL import ImageGrab
+import requests
+
 
 # Sett pytesseract path hvis nødvendig
 pytesseract.pytesseract.tesseract_cmd = r'PyTesseract\tesseract.exe'
 print("PyTesseract set up.")
+
+
+def sendStatus(message):
+    print(message)
+
+
 
 def grab_screen(region=None):
     img = ImageGrab.grab(bbox=region)
